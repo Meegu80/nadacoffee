@@ -15,7 +15,7 @@ const menuItems: Product[] = [
     },
     {
         id: 2, category: 'COFFEE', name: '카페라떼', nameEn: 'Cafe Latte', price: '2,900',
-        img: 'https://images.unsplash.com/photo-1588775224326-72e6b7b6531d?auto=format&fit=crop&q=80&w=400',
+        img: 'https://images.unsplash.com/photo-1558769136-cdce9e782633?auto=format&fit=crop&q=80&w=400',
         desc: '진한 에스프레소와 부드러운 우유가 조화로운 카페라떼입니다. 고소한 우유의 풍미가 커피의 쓴맛을 감싸줍니다.'
     },
     {
@@ -25,7 +25,7 @@ const menuItems: Product[] = [
     },
     {
         id: 4, category: 'NON-COFFEE', name: '리얼초코라떼', nameEn: 'Real Chocolate Latte', price: '3,500',
-        img: 'https://images.unsplash.com/photo-1544787210-2213d84ad960?auto=format&fit=crop&q=80&w=400',
+        img: 'https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&q=80&w=400',
         desc: '진한 초콜릿의 풍미를 그대로 담은 리얼 초코라떼입니다. 달콤한 휴식이 필요할 때 추천합니다.'
     },
     {

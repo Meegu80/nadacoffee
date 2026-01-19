@@ -85,12 +85,19 @@ const newsData: NewsItem[] = [
 
 const NewsPage: React.FC = () => {
     const [expandedIds, setExpandedIds] = useState<number[]>([]);
+    const [visibleCount, setVisibleCount] = useState(5);
 
     const toggleExpand = (id: number) => {
         setExpandedIds(prev =>
             prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
         );
     };
+
+    const handleLoadMore = () => {
+        setVisibleCount(prev => Math.min(prev + 5, newsData.length));
+    };
+
+    const visibleItems = newsData.slice(0, visibleCount);
 
     return (
         <div className="pt-24 min-h-screen bg-white dark:bg-zinc-900 transition-colors duration-300">
@@ -103,7 +110,7 @@ const NewsPage: React.FC = () => {
             {/* News List */}
             <section className="max-w-4xl mx-auto px-4 py-20 pb-32">
                 <div className="space-y-4">
-                    {newsData.map((item) => (
+                    {visibleItems.map((item) => (
                         <div
                             key={item.id}
                             className="bg-white dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 rounded-xl overflow-hidden hover:shadow-lg transition-shadow"
@@ -145,6 +152,18 @@ const NewsPage: React.FC = () => {
                         </div>
                     ))}
                 </div>
+
+                {/* Load More Button */}
+                {visibleCount < newsData.length && (
+                    <div className="mt-12 text-center">
+                        <button
+                            onClick={handleLoadMore}
+                            className="px-10 py-4 bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-full font-bold text-brand-black dark:text-white shadow-sm hover:shadow-md hover:border-brand-yellow transition-all"
+                        >
+                            더 보기 (+5)
+                        </button>
+                    </div>
+                )}
             </section>
         </div>
     );

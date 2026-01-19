@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Search, MapPin } from 'lucide-react';
 
-const stores = [
+const shops = [
     { id: 1, name: '컴포즈커피 부산본점', address: '부산광역시 기장군 기장해안로 232', tel: '051-123-4567' },
     { id: 2, name: '컴포즈커피 서울강남점', address: '서울특별시 강남구 테헤란로 123', tel: '02-987-6543' },
     { id: 3, name: '컴포즈커피 홍대입구역점', address: '서울특별시 마포구 양화로 456', tel: '02-111-2222' },
@@ -11,8 +11,8 @@ const stores = [
 const StorePage: React.FC = () => {
     const [searchTerm, setSearchTerm] = useState('');
 
-    const filteredStores = stores.filter(store =>
-        store.name.includes(searchTerm) || store.address.includes(searchTerm)
+    const filteredStores = shops.filter(shop =>
+        shop.name.includes(searchTerm) || shop.address.includes(searchTerm)
     );
 
     return (
@@ -37,14 +37,14 @@ const StorePage: React.FC = () => {
                     </div>
 
                     <div className="h-[500px] overflow-y-auto pr-2 space-y-4">
-                        {filteredStores.map(store => (
-                            <div key={store.id} className="p-6 bg-white border border-gray-100 rounded-2xl hover:border-brand-yellow transition-all cursor-pointer shadow-sm">
-                                <h3 className="font-bold text-lg mb-2">{store.name}</h3>
+                        {filteredStores.map(shop => (
+                            <div key={shop.id} className="p-6 bg-white border border-gray-100 rounded-2xl hover:border-brand-yellow transition-all cursor-pointer shadow-sm">
+                                <h3 className="font-bold text-lg mb-2">{shop.name}</h3>
                                 <p className="text-gray-500 text-sm mb-4 flex items-start">
                                     <MapPin size={16} className="mt-0.5 mr-2 shrink-0 text-brand-yellow" />
-                                    {store.address}
+                                    {shop.address}
                                 </p>
-                                <p className="text-brand-black text-sm font-bold">{store.tel}</p>
+                                <p className="text-brand-black text-sm font-bold">{shop.tel}</p>
                             </div>
                         ))}
                     </div>
