@@ -1,8 +1,35 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
+import { useAuthStore } from '../stores/useAuthStore';
 
 const LoginPage: React.FC = () => {
+    const navigate = useNavigate();
+    const { login } = useAuthStore();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleLogin = (e: React.FormEvent) => {
+        e.preventDefault();
+        // Mock Login Logic
+        if (!email || !password) {
+            alert('이메일과 비밀번호를 입력해주세요.');
+            return;
+        }
+
+        // Simulate API call validation
+        if (password.length < 4) {
+            alert('비밀번호는 4자 이상이어야 합니다.');
+            return;
+        }
+
+        login({
+            id: Date.now().toString(),
+            username: email.split('@')[0],
+            email: email
+        });
+        navigate('/');
+    };
     return (
         <div className="h-screen w-full flex flex-col overflow-hidden bg-white dark:bg-zinc-900 font-sans">
 
@@ -44,11 +71,14 @@ const LoginPage: React.FC = () => {
                         <p className="text-gray-500 text-sm mt-1">서비스 이용을 위해 로그인해주세요.</p>
                     </div>
 
-                    <form className="space-y-4">
+                    <form onSubmit={handleLogin} className="space-y-4">
                         <div className="space-y-1">
                             <input
                                 type="email"
                                 placeholder="이메일 주소"
+                                required
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                                 className="w-full h-12 px-4 bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-lg focus:outline-none focus:border-brand-yellow transition-all dark:text-white"
                             />
                         </div>
@@ -57,6 +87,9 @@ const LoginPage: React.FC = () => {
                             <input
                                 type="password"
                                 placeholder="비밀번호"
+                                required
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                                 className="w-full h-12 px-4 bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-lg focus:outline-none focus:border-brand-yellow transition-all dark:text-white"
                             />
                             <div className="flex justify-end">
@@ -64,7 +97,7 @@ const LoginPage: React.FC = () => {
                             </div>
                         </div>
 
-                        <button className="w-full h-12 bg-brand-yellow text-brand-black font-black rounded-lg text-lg hover:shadow-md hover:bg-yellow-400 transition-all">
+                        <button type="submit" className="w-full h-12 bg-brand-yellow text-brand-black font-black rounded-lg text-lg hover:shadow-md hover:bg-yellow-400 transition-all">
                             로그인
                         </button>
                     </form>

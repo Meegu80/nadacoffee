@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Breadcrumbs from '../components/Breadcrumbs';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingCart, CreditCard, X, ChevronDown, ChevronUp, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useCart, type Product } from '../stores/CartContext';
@@ -218,6 +219,9 @@ const MenuPage: React.FC = () => {
 
             {/* Menu Grid */}
             <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="mb-6">
+                    <Breadcrumbs items={[{ label: 'MENU', path: '/menu' }, { label: selectedCategory }]} />
+                </div>
                 <motion.div
                     layout
                     className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"

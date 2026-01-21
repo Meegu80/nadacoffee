@@ -1,5 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import MainSection1 from '../components/home/MainSection1';
+import MainSection2 from '../components/home/MainSection2';
+import MainSection3 from '../components/home/MainSection3';
 
 const Home = () => {
     return (
@@ -92,6 +95,11 @@ const Home = () => {
                     </div>
                 </div>
             </section>
+
+            {/* Main Sections */}
+            <MainSection1 />
+            <MainSection2 />
+            <MainSection3 />
 
             {/* Promotions / Featured */}
             <section className="py-24 bg-gray-50">

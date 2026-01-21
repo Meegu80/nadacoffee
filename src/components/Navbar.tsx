@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useAuthStore } from '../stores/useAuthStore';
 import { useThemeStore } from '../stores/useThemeStore';
 import { Link } from 'react-router-dom';
 import { Menu, X, Sun, Moon, User, LogIn } from 'lucide-react';
@@ -9,6 +10,7 @@ const Navbar: React.FC = () => {
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
     const { theme, toggleTheme } = useThemeStore();
+    const { user, logout } = useAuthStore();
 
     // Sync local state with store if needed, or just use store directly. 
     // Navbar was using local state for theme, now swapping to store.
@@ -66,7 +68,7 @@ const Navbar: React.FC = () => {
                 <div className="flex justify-between items-center">
                     <div className="flex-shrink-0 flex items-center">
                         <Link to="/" className="text-2xl font-bold tracking-tighter flex items-center">
-                            <span className={isScrolled ? 'text-brand-black dark:text-white' : 'text-white'}>NADA</span>
+                            <span className={isScrolled ? 'text-brand-coffee dark:text-white' : 'text-brand-coffee dark:text-white'}>NADA</span>
                             <span className="text-brand-yellow ml-1 border-2 border-brand-yellow px-1">COFFEE</span>
                         </Link>
                     </div>
@@ -84,8 +86,8 @@ const Navbar: React.FC = () => {
                                     <Link
                                         to={link.path}
                                         className={`px-6 py-4 text-xl font-bold transition-colors ${isScrolled
-                                            ? 'text-[#4B3621] dark:text-white hover:text-brand-yellow'
-                                            : 'text-white hover:text-brand-yellow'
+                                            ? 'text-brand-coffee dark:text-white hover:text-brand-yellow'
+                                            : 'text-brand-coffee dark:text-white hover:text-brand-yellow'
                                             }`}
                                     >
                                         {link.name}
@@ -113,17 +115,34 @@ const Navbar: React.FC = () => {
 
                         {/* Right Actions */}
                         <div className="flex items-center space-x-4 border-l pl-6 border-gray-300 dark:border-gray-700">
-                            <button onClick={toggleTheme} className={`${isScrolled ? 'text-[#4B3621] dark:text-white' : 'text-white'} hover:text-brand-yellow transition-colors`}>
+                            <button onClick={toggleTheme} className={`${isScrolled ? 'text-brand-coffee dark:text-white' : 'text-brand-coffee dark:text-white'} hover:text-brand-yellow transition-colors`}>
                                 {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
                             </button>
-                            <Link to="/login" className={`relative flex items-center space-x-1 text-sm font-bold ${isScrolled ? 'text-[#4B3621] dark:text-white' : 'text-white'} hover:text-brand-yellow transition-colors`}>
-                                <LogIn size={18} />
-                                <span>로그인</span>
-                            </Link>
-                            <Link to="/signup" className={`flex items-center space-x-1 text-sm font-bold bg-brand-yellow text-brand-black px-3 py-1.5 rounded-full hover:bg-yellow-400 transition-colors`}>
-                                <User size={18} />
-                                <span>회원가입</span>
-                            </Link>
+
+                            {user ? (
+                                <div className="flex items-center space-x-4">
+                                    <span className={`text-sm font-bold ${isScrolled ? 'text-brand-coffee dark:text-white' : 'text-brand-coffee dark:text-white'}`}>
+                                        {user.username}님
+                                    </span>
+                                    <button
+                                        onClick={logout}
+                                        className={`flex items-center space-x-1 text-sm font-bold bg-zinc-200 dark:bg-zinc-700 text-brand-black dark:text-white px-3 py-1.5 rounded-full hover:bg-zinc-300 dark:hover:bg-zinc-600 transition-colors`}
+                                    >
+                                        <span>로그아웃</span>
+                                    </button>
+                                </div>
+                            ) : (
+                                <>
+                                    <Link to="/login" className={`relative flex items-center space-x-1 text-sm font-bold ${isScrolled ? 'text-brand-coffee dark:text-white' : 'text-brand-coffee dark:text-white'} hover:text-brand-yellow transition-colors`}>
+                                        <LogIn size={18} />
+                                        <span>로그인</span>
+                                    </Link>
+                                    <Link to="/signup" className={`flex items-center space-x-1 text-sm font-bold bg-brand-yellow text-brand-black px-3 py-1.5 rounded-full hover:bg-yellow-400 transition-colors`}>
+                                        <User size={18} />
+                                        <span>회원가입</span>
+                                    </Link>
+                                </>
+                            )}
                         </div>
                     </div>
 

@@ -11,6 +11,7 @@ export default {
           yellow: '#FFCE00',
           black: '#1C1C1B',
           gray: '#F4F4F4',
+          coffee: '#4B3621',
         }
       },
       fontFamily: {
