@@ -1,0 +1,216 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router";
+import {
+   MdAdd,
+   MdSearch,
+   MdChevronLeft,
+   MdChevronRight,
+   MdEdit,
+} from "react-icons/md";
+import { adminMemberApi } from "../../../api/admin.member.api.ts";
+import type { Member, Pagination } from "../../../types/admin.member.ts";
+
+function AdminMemberList() {
+   const [members, setMembers] = useState<Member[]>([]);
+   const [pagination, setPagination] = useState<Pagination>({
+      totalMembers: 0,
+      totalPages: 1,
+      currentPage: 1,
+      limit: 10,
+   });
+   const [loading, setLoading] = useState(false);
+
+   const fetchMembers = async (page: number) => {
+      setLoading(true);
+      try {
+         const response = await adminMemberApi.getMembers(page, 10);
+         setMembers(response.data);
+         setPagination(response.pagination);
+      } catch (error) {
+         console.error("Failed to fetch members:", error);
+      } finally {
+         setLoading(false);
+      }
+   };
+
+   useEffect(() => {
+      fetchMembers(pagination.currentPage).then(() =>{});
+   }, [pagination.currentPage]);
+
+   // 3. 헬퍼 함수: 뱃지 스타일
+   const getGradeBadge = (grade: string) => {
+      switch (grade) {
+         case "VIP":
+            return "bg-purple-100 text-purple-700 border-purple-200";
+         case "GOLD":
+            return "bg-yellow-100 text-yellow-800 border-yellow-200";
+         default:
+            return "bg-gray-100 text-gray-600 border-gray-200";
+      }
+   };
+
+   const getStatusBadge = (status: string) => {
+      switch (status) {
+         case "ACTIVE":
+            return "bg-green-100 text-green-700";
+         case "DORMANT":
+            return "bg-orange-100 text-orange-700";
+         case "WITHDRAWN":
+            return "bg-red-100 text-red-700";
+         default:
+            return "bg-gray-100 text-gray-600";
+      }
+   };
+
+   return (
+      <div className="space-y-6">
+         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+               <h2 className="text-2xl font-bold text-[#222222]">회원 관리</h2>
+               <p className="text-sm text-gray-500 mt-1">
+                  총 {pagination.totalMembers}명의 회원이 등록되어 있습니다.
+               </p>
+            </div>
+
+            <div className="flex gap-3">
+               <div className="relative">
+                  <input
+                     type="text"
+                     placeholder="이름, 이메일 검색"
+                     className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-[#FFD400] focus:ring-1 focus:ring-[#FFD400] transition-colors w-64"
+                  />
+                  <MdSearch className="absolute left-3 top-2.5 text-gray-400 w-5 h-5" />
+               </div>
+
+               <Link
+                  to="/admin/members/new"
+                  className="flex items-center gap-2 bg-[#222222] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-black transition-colors">
+                  <MdAdd className="w-5 h-5" />
+                  회원 등록
+               </Link>
+            </div>
+         </div>
+
+         <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+            <div className="overflow-x-auto">
+               <table className="w-full text-left border-collapse">
+                  <thead>
+                     <tr className="bg-gray-50 border-b border-gray-200 text-xs uppercase text-gray-500 font-semibold">
+                        <th className="px-6 py-4 w-16">ID</th>
+                        <th className="px-6 py-4">회원 정보 (이름/이메일)</th>
+                        <th className="px-6 py-4">연락처</th>
+                        <th className="px-6 py-4">등급</th>
+                        <th className="px-6 py-4">상태</th>
+                        <th className="px-6 py-4">가입일</th>
+                        <th className="px-6 py-4 text-center">관리</th>
+                     </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100 text-sm">
+                     {loading ? (
+                        <tr>
+                           <td
+                              colSpan={7}
+                              className="px-6 py-12 text-center text-gray-500">
+                              데이터를 불러오는 중입니다...
+                           </td>
+                        </tr>
+                     ) : members.length === 0 ? (
+                        <tr>
+                           <td
+                              colSpan={7}
+                              className="px-6 py-12 text-center text-gray-500">
+                              등록된 회원이 없습니다.
+                           </td>
+                        </tr>
+                     ) : (
+                        members.map(member => (
+                           <tr
+                              key={member.id}
+                              className="hover:bg-gray-50 transition-colors">
+                              <td className="px-6 py-4 text-gray-500">
+                                 #{member.id}
+                              </td>
+                              <td className="px-6 py-4">
+                                 <div className="flex flex-col">
+                                    <span className="font-medium text-[#222222]">
+                                       {member.name}
+                                    </span>
+                                    <span className="text-xs text-gray-400">
+                                       {member.email}
+                                    </span>
+                                 </div>
+                              </td>
+                              <td className="px-6 py-4 text-gray-600">
+                                 {member.phone}
+                              </td>
+                              <td className="px-6 py-4">
+                                 <span
+                                    className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium border ${getGradeBadge(member.grade)}`}>
+                                    {member.grade}
+                                 </span>
+                              </td>
+                              <td className="px-6 py-4">
+                                 <span
+                                    className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusBadge(member.status)}`}>
+                                    {member.status}
+                                 </span>
+                              </td>
+                              <td className="px-6 py-4 text-gray-500">
+                                 {new Date(
+                                    member.createdAt,
+                                 ).toLocaleDateString()}
+                              </td>
+                              <td className="px-6 py-4 text-center">
+                                 <Link
+                                    to={`/admin/members/${member.id}`}
+                                    className="inline-flex items-center justify-center w-8 h-8 rounded-full hover:bg-gray-100 text-gray-400 hover:text-[#222222] transition-colors"
+                                    title="수정/상세보기">
+                                    <MdEdit className="w-4 h-4" />
+                                 </Link>
+                              </td>
+                           </tr>
+                        ))
+                     )}
+                  </tbody>
+               </table>
+            </div>
+
+            <div className="px-6 py-4 border-t border-gray-100 flex items-center justify-between bg-white">
+               <span className="text-sm text-gray-500">
+                  Page{" "}
+                  <span className="font-medium text-[#222222]">
+                     {pagination.currentPage}
+                  </span>{" "}
+                  of {pagination.totalPages}
+               </span>
+               <div className="flex items-center gap-2">
+                  <button
+                     onClick={() =>
+                        setPagination(prev => ({
+                           ...prev,
+                           currentPage: prev.currentPage - 1,
+                        }))
+                     }
+                     disabled={pagination.currentPage === 1}
+                     className="p-2 rounded-lg border border-gray-200 text-gray-500 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+                     <MdChevronLeft className="w-5 h-5" />
+                  </button>
+                  <button
+                     onClick={() =>
+                        setPagination(prev => ({
+                           ...prev,
+                           currentPage: prev.currentPage + 1,
+                        }))
+                     }
+                     disabled={pagination.currentPage === pagination.totalPages}
+                     className="p-2 rounded-lg border border-gray-200 text-gray-500 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+                     <MdChevronRight className="w-5 h-5" />
+                  </button>
+               </div>
+            </div>
+         </div>
+      </div>
+   );
+}
+
+export default AdminMemberList;
