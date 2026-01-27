@@ -29,7 +29,7 @@ function MainSection1() {
             엄선된 원두,<br/>최상의 로스팅
           </h2>
           <p className="text-gray-600 leading-relaxed mb-8 text-lg">
-            Nerda Coffee는 전 세계 커피 산지에서 엄선한 상위 1%의 스페셜티 원두만을 사용합니다. 
+            Nada Coffee는 전 세계 커피 산지에서 엄선한 상위 1%의 스페셜티 원두만을 사용합니다.
             숙련된 로스터의 섬세한 손길을 거쳐 탄생한 깊고 풍부한 맛을 경험해보세요.
           </p>
           <button className="text-brand-dark font-bold border-b-2 border-brand-yellow hover:text-brand-yellow transition-colors pb-1">

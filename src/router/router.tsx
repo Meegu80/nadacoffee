@@ -14,7 +14,6 @@ import Notice from "../pages/support/Notice.tsx";
 import Contact from "../pages/support/Contact.tsx";
 import LocationPage from "../pages/support/LocationPage.tsx";
 import SearchShop from "../pages/support/SearchShop.tsx";
-import AdminDashboard from "../pages/admin/AdminDashboard.tsx";
 import AdminLayout from "../layouts/AdminLayout.tsx";
 import { useAuthStore } from "../stores/useAuthStore.ts";
 import AdminDashboard from "../pages/(admin)/AdminDashboard.tsx";
@@ -70,9 +69,9 @@ const router = createBrowserRouter([
          /* NEWS */
          { path: "news/news", element: <News /> },
          { path: "news/event", element: <Event /> },
+         { path: "support/notice", element: <Notice /> },
 
          /* SUPPORT / CUSTOMER */
-         { path: "support/notice", element: <Notice /> },
          { path: "support/contact", element: <Contact /> },
          { path: "support/location", element: <LocationPage /> },
          { path: "support/shop", element: <SearchShop /> },

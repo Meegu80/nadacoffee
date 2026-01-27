@@ -13,10 +13,10 @@ const Footer: React.FC = () => {
                                 {/* SVG 파비콘 사용 (흰색 필터 적용) */}
                                 <img 
                                     src="/coffee-favicon.svg" 
-                                    alt="NERDA COFFEE" 
+                                    alt="NADA COFFEE" 
                                     className="h-10 w-auto brightness-0 invert" 
                                 />
-                                <span className="text-2xl font-bold text-white">NERDA COFFEE</span>
+                                <span className="text-2xl font-bold text-white">NADA COFFEE</span>
                             </Link>
                         </div>
                         <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-md">
@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
                 <div className="border-t border-zinc-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
                     <p>© 2026 NADA COFFEE. ALL RIGHTS RESERVED.</p>
                     <div className="mt-4 md:mt-0 flex space-x-6">
-                        <span>Family Site: (주)너는디저트</span>
+                        <span>Family Site: (주)나다디저트</span>
                     </div>
                 </div>
             </div>

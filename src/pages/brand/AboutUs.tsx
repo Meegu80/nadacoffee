@@ -78,7 +78,7 @@ function AboutUs() {
             </h2>
             <p className="text-gray-300 text-sm leading-relaxed">
               전 세계 상위 1% 스페셜티 원두만을 선별합니다.
-              Nerda만의 독자적인 로스팅 공법은 원두가 가진 잠재력을 최대한으로 끌어올립니다.
+              Nada만의 독자적인 로스팅 공법은 원두가 가진 잠재력을 최대한으로 끌어올립니다.
             </p>
           </div>
         </motion.div>
@@ -100,7 +100,7 @@ function AboutUs() {
               </h2>
               <p className="text-white/80 text-sm md:text-base leading-relaxed max-w-lg mx-auto">
                 우리는 지역 사회와 소통하며 지속 가능한 커피 생태계를 꿈꿉니다.
-                Nerda Coffee와 함께하는 모든 순간이 당신에게 영감이 되기를 바랍니다.
+                Nada Coffee와 함께하는 모든 순간이 당신에게 영감이 되기를 바랍니다.
               </p>
             </div>
           </div>
@@ -113,7 +113,7 @@ function AboutUs() {
         <div className="max-w-5xl mx-auto bg-brand-yellow rounded-[40px] p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-xl">
           <div className="text-center md:text-left">
             <h3 className="text-2xl md:text-3xl font-black text-brand-dark mb-2">
-              Nerda Coffee와 함께 여정을 시작하세요
+              Nada Coffee와 함께 여정을 시작하세요
             </h3>
             <p className="text-brand-dark/70 font-medium">가까운 매장에서 신선한 커피를 만나보실 수 있습니다.</p>
           </div>

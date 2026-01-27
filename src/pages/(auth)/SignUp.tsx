@@ -131,7 +131,7 @@ const SignUp: React.FC = () => {
     return (
         <div className="min-h-screen pt-24 pb-20 flex flex-col items-center bg-gray-50 px-4">
             <div className="w-full max-w-3xl bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
-                <div className="h-36 bg-brand-dark flex items-center justify-center text-white/40 text-lg font-bold">NERDA BRAND VISUAL</div>
+                <div className="h-36 bg-brand-dark flex items-center justify-center text-white/40 text-lg font-bold uppercase tracking-widest">NADA BRAND VISUAL</div>
                 <div className="p-10 md:p-14">
                     <h2 className="text-center text-brand-dark mb-8 text-2xl font-black">회원정보 입력</h2>
                     {error && <div className="mb-6 p-4 bg-red-50 text-red-600 rounded-xl text-sm">{error}</div>}

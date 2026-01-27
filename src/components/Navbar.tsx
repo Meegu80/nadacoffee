@@ -50,15 +50,15 @@ const Navbar: React.FC = () => {
             name: 'NEWS/EVENT',
             path: '/news/news',
             subItems: [
+                { name: '공지사항', path: '/support/notice' },
                 { name: 'News', path: '/news/news' },
                 { name: 'Event', path: '/news/event' },
             ]
         },
         {
-            name: '고객지원',
-            path: '/support/notice',
+            name: 'SUPPORT',
+            path: '/support/contact',
             subItems: [
-                { name: '공지사항', path: '/support/notice' },
                 { name: '문의하기', path: '/support/contact' },
                 { name: '오시는 길', path: '/support/location' },
                 { name: '매장찾기', path: '/support/shop' },
@@ -80,7 +80,7 @@ const Navbar: React.FC = () => {
                         {/* 1. Logo (2컬럼) */}
                         <div className="col-span-6 md:col-span-2 flex items-center">
                             <Link to="/" className="flex items-center gap-2">
-                                <img src={logoImg} alt="NERDA COFFEE" className="h-12 w-auto object-contain" />
+                                <img src={logoImg} alt="NADA COFFEE" className="h-12 w-auto object-contain" />
                             </Link>
                         </div>
 

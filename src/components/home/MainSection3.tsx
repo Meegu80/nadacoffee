@@ -14,7 +14,7 @@ function MainSection3() {
             가맹점 개설 문의
           </h2>
           <p className="text-gray-400 text-lg mb-10 max-w-2xl mx-auto">
-            Nerda Coffee와 함께 성공적인 비즈니스를 시작하세요.<br/>
+            Nada Coffee와 함께 성공적인 비즈니스를 시작하세요.<br/>
             체계적인 교육 시스템과 안정적인 물류 공급으로 여러분의 성공을 지원합니다.
           </p>
           <button className="bg-brand-yellow text-brand-dark px-8 py-4 rounded-full font-bold text-lg hover:bg-yellow-300 transition-colors shadow-lg hover:shadow-yellow-400/20">

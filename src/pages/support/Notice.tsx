@@ -4,7 +4,7 @@ import { Search, ChevronLeft, ChevronRight } from 'lucide-react';
 
 // 임시 공지사항 데이터
 const MOCK_NOTICES = [
-  { id: 10, title: "[공지] Nerda Coffee 앱 런칭 기념 이벤트 안내", date: "2024.03.20", isNew: true },
+  { id: 10, title: "[공지] Nada Coffee 앱 런칭 기념 이벤트 안내", date: "2024.03.20", isNew: true },
   { id: 9, title: "[안내] 개인정보 처리방침 개정 안내", date: "2024.03.15", isNew: false },
   { id: 8, title: "[공지] 봄 시즌 신메뉴 '딸기 듬뿍 라떼' 출시", date: "2024.03.10", isNew: false },
   { id: 7, title: "[안내] 화이트데이 기념 원두 할인 프로모션", date: "2024.03.05", isNew: false },
@@ -13,7 +13,7 @@ const MOCK_NOTICES = [
   { id: 4, title: "[공지] 제 5회 바리스타 챔피언십 개최 안내", date: "2024.01.25", isNew: false },
   { id: 3, title: "[안내] 멤버십 등급별 혜택 변경 안내", date: "2024.01.15", isNew: false },
   { id: 2, title: "[공지] 신규 가맹점 '안산단원점' 오픈 안내", date: "2024.01.10", isNew: false },
-  { id: 1, title: "[안내] Nerda Coffee 홈페이지 리뉴얼 오픈", date: "2024.01.01", isNew: false },
+  { id: 1, title: "[안내] Nada Coffee 홈페이지 리뉴얼 오픈", date: "2024.01.01", isNew: false },
 ];
 
 const Notice: React.FC = () => {
@@ -38,7 +38,7 @@ const Notice: React.FC = () => {
             transition={{ delay: 0.2 }}
             className="text-gray-500 font-medium"
           >
-            Nerda Coffee의 새로운 소식과 다양한 정보를 전해드립니다.
+            Nada Coffee의 새로운 소식과 다양한 정보를 전해드립니다.
           </motion.p>
         </div>
 

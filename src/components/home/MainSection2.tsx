@@ -30,7 +30,7 @@ function MainSection2() {
           </h2>
           <p className="text-gray-600 leading-relaxed mb-8 text-lg">
             최고의 원두도 누가 내리느냐에 따라 맛이 달라집니다. 
-            Nerda의 모든 바리스타는 전문 교육 과정을 이수하여, 
+            Nada의 모든 바리스타는 전문 교육 과정을 이수하여,
             언제나 완벽한 밸런스의 커피를 제공합니다.
           </p>
           <button className="text-brand-dark font-bold border-b-2 border-brand-yellow hover:text-brand-yellow transition-colors pb-1">

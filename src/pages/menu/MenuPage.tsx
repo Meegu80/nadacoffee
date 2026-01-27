@@ -60,7 +60,7 @@ const MOCK_PRODUCTS = [
   { id: 6, name: "망고스무디", eng: "Mango Smoothie", price: "3,500", category: "beverage", img: "https://images.unsplash.com/photo-1537640538966-79f369143f8f?q=80&w=800" },
   { id: 7, name: "초코쿠키", eng: "Choco Cookie", price: "1,200", category: "dessert", img: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?q=80&w=800" },
   { id: 8, name: "치즈케이크", eng: "Cheese Cake", price: "4,500", category: "dessert", img: "https://images.unsplash.com/photo-1524351199679-46cddf530c94?q=80&w=800" },
-  { id: 9, name: "너다 시그니처", eng: "Nerda Signature", price: "5,000", category: "choice", img: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800" },
+  { id: 9, name: "나다 시그니처", eng: "Nada Signature", price: "5,000", category: "choice", img: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800" },
 ];
 
 const MenuPage: React.FC = () => {
@@ -92,7 +92,7 @@ const MenuPage: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 className="text-center text-white px-4"
               >
-                <h2 className="text-brand-yellow font-bold tracking-[0.3em] text-xs md:text-sm mb-1 md:mb-2 uppercase">Nerda Coffee Menu</h2>
+                <h2 className="text-brand-yellow font-bold tracking-[0.3em] text-xs md:text-sm mb-1 md:mb-2 uppercase">Nada Coffee Menu</h2>
                 <h1 className="text-xl md:text-5xl font-black tracking-tight uppercase">Menu</h1>
               </motion.div>
             </div>

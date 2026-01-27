@@ -24,14 +24,14 @@ function DeepFreshing() {
             transition={{ duration: 0.8 }}
           >
             <span className="text-[#FFD400] font-bold tracking-[0.5em] text-sm md:text-base mb-6 block">
-              NERDA SPECIAL ROASTING
+              NADA SPECIAL ROASTING
             </span>
             <h1 className="text-5xl md:text-8xl font-black mb-8 leading-tight tracking-tighter">
               DEEP<br/>FRESHING
             </h1>
             <p className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto font-medium leading-relaxed">
               로스팅 직후의 가장 완벽한 풍미를 가두는 기술,<br/>
-              Nerda만의 독자적인 신선함 유지 공법을 소개합니다.
+              Nada만의 독자적인 신선함 유지 공법을 소개합니다.
             </p>
           </motion.div>
         </div>
@@ -107,7 +107,7 @@ function DeepFreshing() {
               <p className="text-gray-400 text-lg leading-relaxed">
                 데이터에 기반한 정밀한 온도 제어 시스템을 통해 각 원두가 가진 
                 고유의 잠재력을 최대한으로 끌어올립니다. 쓴맛은 줄이고 단맛과 
-                바디감을 극대화하는 Nerda만의 로스팅 프로파일은 
+                바디감을 극대화하는 Nada만의 로스팅 프로파일은
                 누구도 흉내 낼 수 없는 깊은 풍미를 완성합니다.
               </p>
             </motion.div>

@@ -4,12 +4,12 @@ import { Search, ChevronLeft, ChevronRight } from 'lucide-react';
 
 // 임시 뉴스 데이터
 const MOCK_NEWS = [
-  { id: 6, title: "Nerda Coffee, 2024 한국 소비자 만족도 1위 수상", date: "2024.03.15", category: "보도자료", img: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800" },
+  { id: 6, title: "Nada Coffee, 2024 한국 소비자 만족도 1위 수상", date: "2024.03.15", category: "보도자료", img: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800" },
   { id: 5, title: "봄 시즌 한정 '체리 블라썸 라떼' 전국 매장 출시", date: "2024.03.10", category: "뉴스", img: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800" },
-  { id: 4, title: "Nerda Coffee, 친환경 종이 빨대 전면 도입 실시", date: "2024.02.28", category: "보도자료", img: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?q=80&w=800" },
-  { id: 3, title: "제 12회 Nerda 바리스타 챔피언십 성료", date: "2024.02.15", category: "뉴스", img: "https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=800" },
+  { id: 4, title: "Nada Coffee, 친환경 종이 빨대 전면 도입 실시", date: "2024.02.28", category: "보도자료", img: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?q=80&w=800" },
+  { id: 3, title: "제 12회 Nada 바리스타 챔피언십 성료", date: "2024.02.15", category: "뉴스", img: "https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=800" },
   { id: 2, title: "안산 단원구 신규 가맹점 오픈 및 이벤트 안내", date: "2024.01.20", category: "뉴스", img: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800" },
-  { id: 1, title: "Nerda Coffee, 누적 가맹점 3,000호점 돌파 기념식", date: "2024.01.05", category: "보도자료", img: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=800" },
+  { id: 1, title: "Nada Coffee, 누적 가맹점 3,000호점 돌파 기념식", date: "2024.01.05", category: "보도자료", img: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=800" },
 ];
 
 const News: React.FC = () => {
@@ -37,7 +37,7 @@ const News: React.FC = () => {
             transition={{ delay: 0.2 }}
             className="text-gray-500 font-medium"
           >
-            Nerda Coffee의 생생한 소식을 가장 빠르게 만나보세요.
+            Nada Coffee의 생생한 소식을 가장 빠르게 만나보세요.
           </motion.p>
         </div>
 

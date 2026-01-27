@@ -7,7 +7,7 @@ function Header() {
         {/* Logo */}
         <Link to="/" className="text-xl font-bold text-indigo-600 flex items-center gap-2">
           <img src="/coffee-favicon.svg" alt="Logo" className="w-6 h-6" />
-          Nerda
+          Nada
         </Link>
 
         {/* GNB */}
