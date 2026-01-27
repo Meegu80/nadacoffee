@@ -1,5 +1,5 @@
 import Layout from "../layouts/Layout.tsx";
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, redirect } from "react-router";
 import Home from "../pages/Home.tsx";
 import LoginPage from "../pages/(auth)/LoginPage.tsx";
 import SignUp from "../pages/(auth)/SignUp.tsx";
@@ -15,25 +15,49 @@ import Contact from "../pages/support/Contact.tsx";
 import LocationPage from "../pages/support/LocationPage.tsx";
 import SearchShop from "../pages/support/SearchShop.tsx";
 import AdminDashboard from "../pages/admin/AdminDashboard.tsx";
+import AdminLayout from "../layouts/AdminLayout.tsx";
+import { useAuthStore } from "../stores/useAuthStore.ts";
+import AdminDashboard from "../pages/(admin)/AdminDashboard.tsx";
+import AdminMemberList from "../pages/(admin)/members/AdminMemberList.tsx";
+import AdminMemberNew from "../pages/(admin)/members/AdminMemberNew.tsx";
+import AdminMemberEdit from "../pages/(admin)/members/AdminMemberEdit.tsx";
+import AdminCategoryList from "../pages/(admin)/categories/AdminCategoryList.tsx";
+import AdminCategoryNew from "../pages/(admin)/categories/AdminCategoryNew.tsx";
+import AdminCategoryDetail from "../pages/(admin)/categories/AdminCategoryDetail.tsx";
+
+export const adminOnlyLoader = () => {
+   const { user } = useAuthStore.getState();
+   if (!user) {
+      alert("관리자 로그인이 필요합니다.");
+      return redirect("/login");
+   }
+
+   if (user?.role !== "ADMIN") {
+      alert("접근 권한이 없습니다.");
+      return redirect("/");
+   }
+
+   return null;
+};
 
 const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <Layout />,
-        children: [
-            { index: true, element: <Home /> },
-            { path: "login", element: <LoginPage /> },
-            { path: "signup", element: <SignUp /> },
-            { path: "cart", element: <Cart /> },
-            { path: "checkout", element: <Checkout /> },
+   {
+      path: "/",
+      element: <Layout />,
+      children: [
+         { index: true, element: <Home /> },
+         { path: "login", element: <LoginPage /> },
+         { path: "signup", element: <SignUp /> },
+         { path: "cart", element: <Cart /> },
+         { path: "checkout", element: <Checkout /> },
 
-            /* BRAND */
-            { path: "brand/about", element: <AboutUs /> },
-            { path: "brand/process", element: <DeepFreshing /> },
+         /* BRAND */
+         { path: "brand/about", element: <AboutUs /> },
+         { path: "brand/process", element: <DeepFreshing /> },
 
             /* MENU */
-            { 
-                path: "menu", 
+            {
+                path: "menu",
                 children: [
                     { index: true, element: <MenuPage /> },
                     { path: "coffee", element: <MenuPage /> },
@@ -43,20 +67,40 @@ const router = createBrowserRouter([
                 ]
             },
 
-            /* NEWS */
-            { path: "news/news", element: <News /> },
-            { path: "news/event", element: <Event /> },
+         /* NEWS */
+         { path: "news/news", element: <News /> },
+         { path: "news/event", element: <Event /> },
 
-            /* SUPPORT / CUSTOMER */
-            { path: "support/notice", element: <Notice /> },
-            { path: "support/contact", element: <Contact /> },
-            { path: "support/location", element: <LocationPage /> },
-            { path: "support/shop", element: <SearchShop /> },
-
-            /* ADMIN */
-            { path: "admin", element: <AdminDashboard /> },
-        ],
-    },
+         /* SUPPORT / CUSTOMER */
+         { path: "support/notice", element: <Notice /> },
+         { path: "support/contact", element: <Contact /> },
+         { path: "support/location", element: <LocationPage /> },
+         { path: "support/shop", element: <SearchShop /> },
+      ],
+   },
+   {
+      path: "/admin",
+      element: <AdminLayout />,
+      children: [
+         { index: true, element: <AdminDashboard /> },
+         {
+            path: "members",
+            children: [
+               { index: true, element: <AdminMemberList /> },
+               { path: "new", element: <AdminMemberNew /> },
+               { path: ":id", element: <AdminMemberEdit /> },
+            ],
+         },
+         {
+            path: "categories",
+            children: [
+               { index: true, element: <AdminCategoryList /> },
+               { path: "new", element: <AdminCategoryNew /> },
+               { path: ":id", element: <AdminCategoryDetail /> },
+            ],
+         },
+      ],
+   },
 ]);
 
 export default router;
